@@ -13,7 +13,7 @@ namespace StudentAdminPortal.API.DataModels
         public DateTime DateOfBirth { get; set; }
         public string Email { get; set; }
         public long Mobile { get; set; }
-        public string ProgielImageUrl { get; set; }
+        public string ProfileImageUrl { get; set; }
         public Guid GenderId { get; set; }
         //Navigation Property
         public Gender Gender { get; set; }
