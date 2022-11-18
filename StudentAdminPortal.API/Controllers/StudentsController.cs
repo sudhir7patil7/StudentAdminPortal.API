@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using StudentAdminPortal.API.DomainModels;
 using StudentAdminPortal.API.Repositories;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,23 @@ namespace StudentAdminPortal.API.Controllers
         [Route("[Controller]")]
         public IActionResult GetAllStudents()
         {
-            return Ok(studentRepository.GetStudents());
+            var Students = studentRepository.GetStudents();
+            var domainModelStudents = new List<Student>();
+            foreach (var student in Students)
+            {
+                domainModelStudents.Add(new Student()
+                {
+                    Id = student.Id,
+                    FirstName = student.FirstName,
+                    LastName = student.LastName,
+                    DateOfBirth = student.DateOfBirth,
+                    Email = student.Email,
+                    Mobile = student.Mobile,
+                    ProfileImageUrl = student.ProfileImageUrl,
+                    GenderId = student.GenderId
+                });
+            }
+            return Ok(domainModelStudents);
         }
     }
 }
