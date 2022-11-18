@@ -10,8 +10,8 @@ using StudentAdminPortal.API.DataModels;
 namespace StudentAdminPortal.API.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20221117072713_Initial3")]
-    partial class Initial3
+    [Migration("20221118104254_V23")]
+    partial class V23
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

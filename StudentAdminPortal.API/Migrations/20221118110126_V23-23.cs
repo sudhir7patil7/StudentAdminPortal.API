@@ -2,7 +2,7 @@
 
 namespace StudentAdminPortal.API.Migrations
 {
-    public partial class Initial1 : Migration
+    public partial class V2323 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

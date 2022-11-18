@@ -12,12 +12,12 @@ namespace StudentAdminPortal.API.Controllers
     {
         private readonly IStudentRepository studentRepository;
 
-        public StudentsController(IStudentRepository  studentRepository)
+        public StudentsController(IStudentRepository studentRepository)
         {
             this.studentRepository = studentRepository;
         }
         [HttpGet]
-        [Route("[controller]")]
+        [Route("[Controller]")]
         public IActionResult GetAllStudents()
         {
             return Ok(studentRepository.GetStudents());

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StudentAdminPortal.API.Repositories
 {
-    public class SQLStudentRepository:IStudentRepository
+    public class SQLStudentRepository : IStudentRepository
     {
         private readonly AppDBContext Context;
 

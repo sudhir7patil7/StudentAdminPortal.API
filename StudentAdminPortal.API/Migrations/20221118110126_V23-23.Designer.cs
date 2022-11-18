@@ -10,8 +10,8 @@ using StudentAdminPortal.API.DataModels;
 namespace StudentAdminPortal.API.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20221117070536_Initial1")]
-    partial class Initial1
+    [Migration("20221118110126_V23-23")]
+    partial class V2323
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,7 +41,7 @@ namespace StudentAdminPortal.API.Migrations
                     b.HasIndex("StudentId")
                         .IsUnique();
 
-                    b.ToTable("addresses");
+                    b.ToTable("address");
                 });
 
             modelBuilder.Entity("StudentAdminPortal.API.DataModels.Gender", b =>
@@ -55,7 +55,7 @@ namespace StudentAdminPortal.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("genders");
+                    b.ToTable("gender");
                 });
 
             modelBuilder.Entity("StudentAdminPortal.API.DataModels.Student", b =>
@@ -82,14 +82,14 @@ namespace StudentAdminPortal.API.Migrations
                     b.Property<long>("Mobile")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("ProgielImageUrl")
+                    b.Property<string>("ProfileImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("GenderId");
 
-                    b.ToTable("students");
+                    b.ToTable("student");
                 });
 
             modelBuilder.Entity("StudentAdminPortal.API.DataModels.Address", b =>

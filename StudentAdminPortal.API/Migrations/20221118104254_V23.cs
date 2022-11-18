@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StudentAdminPortal.API.Migrations
 {
-    public partial class InitiALmIRATIN : Migration
+    public partial class V23 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "genders",
+                name: "gender",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -16,11 +16,11 @@ namespace StudentAdminPortal.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_genders", x => x.Id);
+                    table.PrimaryKey("PK_gender", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "students",
+                name: "student",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -29,22 +29,22 @@ namespace StudentAdminPortal.API.Migrations
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Mobile = table.Column<long>(type: "bigint", nullable: false),
-                    ProgielImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProfileImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GenderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_students", x => x.Id);
+                    table.PrimaryKey("PK_student", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_students_genders_GenderId",
+                        name: "FK_student_gender_GenderId",
                         column: x => x.GenderId,
-                        principalTable: "genders",
+                        principalTable: "gender",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "addresses",
+                name: "address",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -54,37 +54,37 @@ namespace StudentAdminPortal.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_addresses", x => x.Id);
+                    table.PrimaryKey("PK_address", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_addresses_students_StudentId",
+                        name: "FK_address_student_StudentId",
                         column: x => x.StudentId,
-                        principalTable: "students",
+                        principalTable: "student",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_addresses_StudentId",
-                table: "addresses",
+                name: "IX_address_StudentId",
+                table: "address",
                 column: "StudentId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_students_GenderId",
-                table: "students",
+                name: "IX_student_GenderId",
+                table: "student",
                 column: "GenderId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "addresses");
+                name: "address");
 
             migrationBuilder.DropTable(
-                name: "students");
+                name: "student");
 
             migrationBuilder.DropTable(
-                name: "genders");
+                name: "gender");
         }
     }
 }
