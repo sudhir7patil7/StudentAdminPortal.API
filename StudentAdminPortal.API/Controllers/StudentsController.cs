@@ -23,7 +23,7 @@ namespace StudentAdminPortal.API.Controllers
         }
         [HttpGet]
         [Route("[Controller]")]
-        public IActionResult GetAllStudents()
+        public async Task<IActionResult> GetAllStudents()
         {
             //Mapping without AutoMapper
             //var students = studentRepository.GetStudents();
@@ -58,7 +58,7 @@ namespace StudentAdminPortal.API.Controllers
 
 
             //Mapping with AutoMapper
-            var students = studentRepository.GetStudents();
+            var students = await studentRepository.GetStudents();
             return Ok(mapper.Map<List<Student>>(students));
         }
     }
